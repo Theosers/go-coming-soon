@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fffaf0" />
+  <title>À propos de Camille Berthon — Therapiego</title>
+  <meta name="description" content="Découvrez le parcours, la vision du Go et l’approche pédagogique de Camille Berthon, professeur et coach de Go." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="Therapiego" />
+  <meta property="og:title" content="Camille Berthon — Therapiego" />
+  <meta property="og:description" content="Découvrez le parcours et la vision du Go de Camille Berthon, professeur et coach de Go." />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" type="image/webp" sizes="64x64" href="assets/therapiego-favicon.webp" />
+  <link rel="preload" as="image" href="assets/therapiego-avatar-navbar.webp" type="image/webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #17150f;
+      --muted: #645f53;
+      --cream: #fffaf0;
+      --cream-2: #f4ead9;
+      --paper: rgba(255, 253, 247, .82);
+      --red: #3f725d;
+      --red-dark: #2f5948;
+      --gold: #c9a262;
+      --jade: #3f725d;
+      --line: rgba(23, 21, 15, .11);
+      --shadow: 0 28px 80px rgba(71, 55, 28, .11);
+      --container: min(1180px, calc(100% - 48px));
+      --ease: cubic-bezier(.2, .8, .2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 118px;
+      background: var(--cream);
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 88% 6%, rgba(63, 114, 93, .08), transparent 22rem),
+        radial-gradient(circle at 8% 32%, rgba(63, 114, 93, .08), transparent 26rem),
+        linear-gradient(180deg, #fffaf0 0%, #f4ead9 100%);
+      font-family: "Inter", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .035;
+      background-image:
+        linear-gradient(var(--ink) 1px, transparent 1px),
+        linear-gradient(90deg, var(--ink) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: linear-gradient(to bottom, black, transparent 68%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    ::selection {
+      color: var(--cream);
+      background: var(--red);
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 1000;
+      padding: 12px 16px;
+      color: #fff;
+      border-radius: 10px;
+      background: var(--ink);
+      transform: translateY(-160%);
+      transition: transform 180ms ease;
+    }
+
+    .skip-link:focus {
+      transform: none;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 18px 0 10px;
+    }
+
+    .navbar {
+      width: var(--container);
+      min-height: 72px;
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 24px;
+      padding: 10px 12px;
+      border: 1px solid rgba(23, 21, 15, .09);
+      border-radius: 999px;
+      background: rgba(255, 250, 240, .84);
+      box-shadow: 0 18px 58px rgba(78, 62, 35, .12), inset 0 1px 0 rgba(255,255,255,.86);
+      backdrop-filter: blur(22px) saturate(1.05);
+      -webkit-backdrop-filter: blur(22px) saturate(1.05);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .brand-avatar {
+      width: 48px;
+      height: 48px;
+      padding: 2px;
+      flex: 0 0 48px;
+      border: 1px solid rgba(201, 162, 98, .35);
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 10px 24px rgba(71, 55, 28, .14);
+      object-fit: contain;
+    }
+
+    .brand-copy {
+      display: grid;
+      gap: 2px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .brand-name {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: .84rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+    }
+
+    .brand-sub {
+      color: #9a7030;
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .33em;
+    }
+
+    .nav-links {
+      justify-self: center;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px;
+      border: 1px solid rgba(23, 21, 15, .06);
+      border-radius: 999px;
+      background: rgba(23, 21, 15, .035);
+    }
+
+    .nav-links a {
+      padding: 10px 14px;
+      color: rgba(23, 21, 15, .68);
+      border-radius: 999px;
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: .82rem;
+      font-weight: 600;
+      transition: 180ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] {
+      color: var(--ink);
+      background: rgba(239, 224, 201, .8);
+    }
+
+    .nav-cta,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 21px;
+      color: #fffaf0;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #4f856d, var(--red-dark));
+      box-shadow: 0 14px 34px rgba(63, 114, 93, .22);
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .nav-cta:hover,
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 42px rgba(63, 114, 93, .3);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: rgba(255,255,255,.56);
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      margin: 4px auto;
+      background: var(--ink);
+    }
+
+    .hero {
+      width: var(--container);
+      margin: 34px auto 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(300px, .72fr);
+      gap: clamp(38px, 7vw, 96px);
+      align-items: center;
+      padding: clamp(44px, 7vw, 88px);
+      border: 1px solid var(--line);
+      border-radius: clamp(34px, 5vw, 66px);
+      background:
+        radial-gradient(circle at 14% 0%, rgba(63,114,93,.1), transparent 27rem),
+        linear-gradient(145deg, rgba(255,255,255,.76), rgba(255,250,240,.38));
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.82);
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      color: var(--red);
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: var(--red);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Space Grotesk", sans-serif;
+      letter-spacing: -.04em;
+      text-wrap: balance;
+    }
+
+    h1 {
+      max-width: 800px;
+      font-size: clamp(3.1rem, 7vw, 6.8rem);
+      line-height: .92;
+    }
+
+    .hero-lead {
+      max-width: 730px;
+      margin-top: 28px;
+      color: #373329;
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: clamp(1.14rem, 1.8vw, 1.4rem);
+      line-height: 1.7;
+    }
+
+    .hero-lead strong {
+      color: var(--ink);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .hero-meta span {
+      padding: 9px 13px;
+      color: #504a3d;
+      border: 1px solid rgba(23,21,15,.08);
+      border-radius: 999px;
+      background: rgba(255,255,255,.5);
+      font-size: .77rem;
+      font-weight: 700;
+    }
+
+    .portrait-card {
+      position: relative;
+      max-width: 390px;
+      justify-self: end;
+      padding: 16px;
+      border: 1px solid rgba(201, 162, 98, .28);
+      border-radius: 48% 48% 34px 34px;
+      background: rgba(255,255,255,.54);
+      box-shadow: 0 30px 70px rgba(71, 55, 28, .14);
+    }
+
+    .portrait-card::before {
+      content: "囲碁";
+      position: absolute;
+      right: -18px;
+      top: 26%;
+      z-index: 2;
+      padding: 13px 9px;
+      color: var(--cream);
+      border-radius: 999px;
+      background: var(--red);
+      font-size: .76rem;
+      font-weight: 700;
+      writing-mode: vertical-rl;
+      letter-spacing: .12em;
+      box-shadow: 0 16px 34px rgba(63,114,93,.25);
+    }
+
+    .portrait-card img {
+      width: 100%;
+      aspect-ratio: .92;
+      border-radius: 46% 46% 24px 24px;
+      background: #fff;
+      object-fit: contain;
+      object-position: center bottom;
+    }
+
+    .portrait-caption {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 16px;
+      padding: 18px 6px 5px;
+    }
+
+    .portrait-caption strong {
+      display: block;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.1rem;
+    }
+
+    .portrait-caption small {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .stone-mark {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--ink);
+      box-shadow: -22px 0 0 #f9f2e4, -22px 0 0 1px rgba(23,21,15,.15);
+    }
+
+    .story-shell {
+      width: var(--container);
+      margin: clamp(78px, 10vw, 132px) auto;
+      display: grid;
+      grid-template-columns: 244px minmax(0, 760px);
+      justify-content: space-between;
+      gap: clamp(46px, 8vw, 110px);
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 112px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .toc-label {
+      color: var(--red);
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .toc ol {
+      list-style: none;
+      display: grid;
+      gap: 4px;
+    }
+
+    .toc a {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 8px;
+      padding: 8px 10px;
+      color: var(--muted);
+      border-radius: 12px;
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: .83rem;
+      line-height: 1.3;
+      transition: 180ms ease;
+    }
+
+    .toc a span {
+      color: var(--gold);
+      font-size: .7rem;
+      font-weight: 800;
+    }
+
+    .toc a:hover {
+      color: var(--ink);
+      background: rgba(255,255,255,.5);
+    }
+
+    .article {
+      min-width: 0;
+    }
+
+    .chapter {
+      position: relative;
+      padding: 0 0 clamp(74px, 9vw, 112px);
+    }
+
+    .chapter + .chapter {
+      padding-top: clamp(70px, 8vw, 96px);
+      border-top: 1px solid var(--line);
+    }
+
+    .chapter-number {
+      display: block;
+      margin-bottom: 17px;
+      color: var(--gold);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: .74rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+    }
+
+    .chapter h2 {
+      max-width: 680px;
+      margin-bottom: 28px;
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      line-height: 1;
+    }
+
+    .chapter p {
+      color: #3d392f;
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: clamp(1.03rem, 1.4vw, 1.16rem);
+      line-height: 1.82;
+      text-wrap: pretty;
+    }
+
+    .chapter p + p {
+      margin-top: 18px;
+    }
+
+    .pullquote {
+      margin: 36px 0;
+      padding: 28px 28px 28px 32px;
+      color: var(--ink);
+      border-left: 4px solid var(--red);
+      border-radius: 0 24px 24px 0;
+      background: rgba(255,255,255,.54);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(1.3rem, 2.7vw, 2rem);
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: -.025em;
+    }
+
+    .questions {
+      margin: 28px 0;
+      padding: 24px 26px;
+      color: #2c4f40;
+      border: 1px solid rgba(63,114,93,.18);
+      border-radius: 24px;
+      background: rgba(63,114,93,.07);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      font-weight: 600;
+      line-height: 1.55;
+    }
+
+    .closing-lines {
+      margin-top: 30px;
+      display: grid;
+      gap: 8px;
+      color: var(--ink);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(1.15rem, 2.3vw, 1.55rem);
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .closing-lines span::before {
+      content: "●";
+      margin-right: 12px;
+      color: var(--red);
+      font-size: .54em;
+      vertical-align: .18em;
+    }
+
+    .final-cta {
+      width: var(--container);
+      margin: 0 auto 48px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 32px;
+      align-items: center;
+      padding: clamp(34px, 6vw, 68px);
+      color: var(--cream);
+      border-radius: 40px;
+      background:
+        radial-gradient(circle at 82% 0%, rgba(201,162,98,.22), transparent 24rem),
+        #17150f;
+      box-shadow: 0 32px 80px rgba(23,21,15,.2);
+    }
+
+    .final-cta h2 {
+      max-width: 710px;
+      font-size: clamp(2rem, 5vw, 4.2rem);
+      line-height: 1;
+    }
+
+    .final-cta p {
+      max-width: 620px;
+      margin-top: 17px;
+      color: rgba(255,250,240,.68);
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .footer {
+      width: var(--container);
+      margin-inline: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 0 36px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: .78rem;
+    }
+
+    .footer a:hover {
+      color: var(--red);
+    }
+
+    @media (max-width: 980px) {
+      .navbar {
+        grid-template-columns: auto auto;
+      }
+
+      .nav-toggle {
+        display: block;
+        justify-self: end;
+      }
+
+      .nav-links {
+        display: none;
+        grid-column: 1 / -1;
+        width: 100%;
+        border-radius: 22px;
+      }
+
+      .nav-links.is-open {
+        display: grid;
+      }
+
+      .nav-links a {
+        text-align: center;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait-card {
+        width: min(100%, 420px);
+        justify-self: start;
+      }
+
+      .story-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .toc {
+        position: static;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: rgba(255,255,255,.44);
+      }
+
+      .toc ol {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      :root {
+        --container: min(100% - 22px, 1180px);
+      }
+
+      .site-header {
+        padding-top: 10px;
+      }
+
+      .navbar {
+        border-radius: 26px;
+      }
+
+      .brand-copy {
+        display: none;
+      }
+
+      .hero {
+        margin-top: 16px;
+        padding: 36px 22px;
+        border-radius: 32px;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 17vw, 4.8rem);
+      }
+
+      .portrait-card::before {
+        right: -7px;
+      }
+
+      .story-shell {
+        margin-top: 72px;
+      }
+
+      .toc ol {
+        grid-template-columns: 1fr;
+      }
+
+      .chapter h2 {
+        font-size: 2.35rem;
+      }
+
+      .final-cta {
+        grid-template-columns: 1fr;
+        border-radius: 30px;
+      }
+
+      .footer {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+      }
+    }
+
+    /* Direction éditoriale finale */
+    .reading-progress {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 1001;
+      height: 4px;
+      background: linear-gradient(90deg, var(--red), #6e9b83 55%, var(--gold));
+      box-shadow: 0 3px 14px rgba(63,114,93,.25);
+      transform: scaleX(var(--reading-progress, 0));
+      transform-origin: left center;
+    }
+
+    .hero {
+      position: relative;
+      min-height: min(760px, calc(100svh - 128px));
+      grid-template-columns: minmax(0, .92fr) minmax(390px, .7fr);
+      gap: clamp(42px, 7vw, 94px);
+      color: var(--cream);
+      border-color: rgba(255,250,240,.12);
+      background:
+        radial-gradient(circle at 78% 14%, rgba(201,162,98,.2), transparent 27rem),
+        radial-gradient(circle at 2% 100%, rgba(63,114,93,.26), transparent 28rem),
+        #17150f;
+      box-shadow:
+        0 38px 100px rgba(23,21,15,.22),
+        inset 0 1px 0 rgba(255,255,255,.07);
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: .13;
+      background-image:
+        linear-gradient(rgba(255,250,240,.23) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,250,240,.23) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(90deg, black, transparent 68%);
+    }
+
+    .hero .eyebrow {
+      color: var(--gold);
+    }
+
+    .hero .eyebrow::before {
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      color: var(--cream);
+      font-size: clamp(3.8rem, 7vw, 7rem);
+      text-shadow: 0 18px 54px rgba(0,0,0,.24);
+    }
+
+    .hero-lead {
+      max-width: 650px;
+      color: rgba(255,250,240,.72);
+      font-size: clamp(1.08rem, 1.55vw, 1.28rem);
+    }
+
+    .hero-lead strong {
+      color: #f0d49a;
+    }
+
+    .hero-meta span {
+      color: rgba(255,250,240,.82);
+      border-color: rgba(255,250,240,.13);
+      background: rgba(255,250,240,.07);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .portrait-card {
+      width: min(100%, 460px);
+      max-width: none;
+      padding: 10px;
+      border-color: rgba(227,200,137,.32);
+      border-radius: 38px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.16), rgba(255,255,255,.035)),
+        rgba(255,250,240,.04);
+      box-shadow:
+        0 38px 80px rgba(0,0,0,.32),
+        inset 0 1px 0 rgba(255,255,255,.12);
+      transform: rotate(1.2deg);
+    }
+
+    .portrait-card::before {
+      right: -14px;
+      top: 54px;
+      color: #17150f;
+      background: #f0d49a;
+      box-shadow: 0 18px 38px rgba(0,0,0,.28);
+    }
+
+    .portrait-card img {
+      aspect-ratio: 4 / 5;
+      border-radius: 29px;
+      background: #e9d7bd;
+      object-fit: cover;
+      object-position: 50% 44%;
+      filter: saturate(.93) contrast(1.03);
+    }
+
+    .portrait-caption {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 26px;
+      padding: 15px 18px;
+      border: 1px solid rgba(255,255,255,.62);
+      border-radius: 19px;
+      background: rgba(255,250,240,.88);
+      box-shadow: 0 18px 46px rgba(23,21,15,.2);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .portrait-caption strong {
+      color: var(--ink);
+    }
+
+    .portrait-caption small {
+      color: #5a5448;
+    }
+
+    .story-shell {
+      grid-template-columns: 270px minmax(0, 840px);
+      gap: clamp(42px, 6vw, 84px);
+      margin-top: clamp(84px, 10vw, 138px);
+    }
+
+    .toc {
+      top: 108px;
+      max-height: calc(100vh - 132px);
+      gap: 16px;
+      padding: 22px 18px;
+      color: var(--cream);
+      border: 1px solid rgba(255,250,240,.08);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(201,162,98,.18), transparent 13rem),
+        #201e18;
+      box-shadow: 0 26px 64px rgba(23,21,15,.18);
+      overflow: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(201,162,98,.38) transparent;
+    }
+
+    .toc-label {
+      padding-inline: 10px;
+      color: #e3c889;
+    }
+
+    .toc ol {
+      gap: 3px;
+    }
+
+    .toc a {
+      color: rgba(255,250,240,.56);
+      border: 1px solid transparent;
+    }
+
+    .toc a span {
+      color: rgba(227,200,137,.56);
+    }
+
+    .toc a:hover,
+    .toc a.is-active {
+      color: var(--cream);
+      border-color: rgba(255,250,240,.08);
+      background: rgba(255,250,240,.07);
+      transform: translateX(3px);
+    }
+
+    .toc a.is-active span {
+      color: #f0d49a;
+    }
+
+    .article {
+      display: grid;
+      gap: 28px;
+    }
+
+    .chapter,
+    .chapter + .chapter {
+      position: relative;
+      padding: clamp(38px, 5vw, 58px);
+      border: 1px solid rgba(23,21,15,.085);
+      border-radius: 36px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(201,162,98,.1), transparent 18rem),
+        rgba(255,253,247,.7);
+      box-shadow:
+        0 22px 64px rgba(71,55,28,.075),
+        inset 0 1px 0 rgba(255,255,255,.78);
+      overflow: hidden;
+    }
+
+    .chapter:nth-of-type(3n + 2) {
+      background:
+        radial-gradient(circle at 100% 0%, rgba(63,114,93,.11), transparent 20rem),
+        rgba(255,253,247,.74);
+    }
+
+    .chapter:nth-of-type(3n) {
+      background:
+        radial-gradient(circle at 100% 0%, rgba(63,114,93,.075), transparent 18rem),
+        rgba(255,253,247,.72);
+    }
+
+    .chapter::after {
+      content: "";
+      position: absolute;
+      top: -46px;
+      right: -46px;
+      width: 122px;
+      height: 122px;
+      border: 1px solid rgba(201,162,98,.15);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 18px rgba(201,162,98,.035),
+        0 0 0 36px rgba(201,162,98,.025);
+      pointer-events: none;
+    }
+
+    .chapter-number {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 20px;
+      padding: 8px 11px;
+      color: #875d26;
+      border: 1px solid rgba(201,162,98,.2);
+      border-radius: 999px;
+      background: rgba(201,162,98,.1);
+      font-size: .68rem;
+    }
+
+    .chapter h2 {
+      max-width: 720px;
+      margin-bottom: 30px;
+      font-size: clamp(2.15rem, 4vw, 3.75rem);
+    }
+
+    .chapter p {
+      max-width: 69ch;
+      color: #443f34;
+    }
+
+    .chapter p:first-of-type {
+      color: #26231d;
+      font-size: clamp(1.08rem, 1.55vw, 1.22rem);
+    }
+
+    .pullquote {
+      border: 1px solid rgba(63,114,93,.14);
+      border-left: 4px solid var(--red);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(63,114,93,.08), transparent 12rem),
+        rgba(255,255,255,.68);
+    }
+
+    .questions {
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+    }
+
+    .final-cta {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 88% 0%, rgba(63,114,93,.32), transparent 24rem),
+        radial-gradient(circle at 10% 100%, rgba(63,114,93,.26), transparent 28rem),
+        #17150f;
+    }
+
+    .final-cta::after {
+      content: "囲碁";
+      position: absolute;
+      right: 42px;
+      bottom: -30px;
+      color: rgba(255,250,240,.045);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(6rem, 14vw, 12rem);
+      font-weight: 700;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .final-cta > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        padding: clamp(42px, 7vw, 72px);
+      }
+
+      .portrait-card {
+        width: min(100%, 560px);
+        justify-self: center;
+        transform: none;
+      }
+
+      .portrait-card img {
+        aspect-ratio: 4 / 4.4;
+      }
+
+      .toc {
+        position: static;
+        max-height: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 38px 22px 26px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.2rem, 17vw, 5rem);
+      }
+
+      .portrait-card {
+        padding: 7px;
+        border-radius: 28px;
+      }
+
+      .portrait-card img {
+        aspect-ratio: 4 / 5;
+        border-radius: 22px;
+      }
+
+      .portrait-caption {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+      }
+
+      .toc {
+        padding: 18px;
+      }
+
+      .toc ol {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        scroll-snap-type: x proximity;
+        scrollbar-width: none;
+      }
+
+      .toc ol::-webkit-scrollbar {
+        display: none;
+      }
+
+      .toc li {
+        flex: 0 0 176px;
+        scroll-snap-align: start;
+      }
+
+      .toc a {
+        min-height: 56px;
+        align-items: center;
+        background: rgba(255,250,240,.045);
+      }
+
+      .toc a:hover,
+      .toc a.is-active {
+        transform: none;
+      }
+
+      .article {
+        gap: 18px;
+      }
+
+      .chapter,
+      .chapter + .chapter {
+        padding: 30px 22px;
+        border-radius: 27px;
+      }
+
+      .chapter h2 {
+        font-size: clamp(2rem, 10vw, 2.7rem);
+      }
+
+      .pullquote {
+        margin: 28px 0;
+        padding: 22px 20px;
+      }
+    }
+
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-dropdown-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 14px;
+      color: rgba(23,21,15,.68);
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .nav-dropdown-toggle::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      margin-top: -3px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg);
+      transition: transform 180ms ease;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-toggle,
+    .nav-dropdown:focus-within .nav-dropdown-toggle,
+    .nav-dropdown.is-open .nav-dropdown-toggle,
+    .nav-dropdown.is-current .nav-dropdown-toggle {
+      color: var(--ink);
+      background: rgba(239,224,201,.8);
+    }
+
+    .nav-dropdown.is-open .nav-dropdown-toggle::after {
+      margin-top: 3px;
+      transform: rotate(225deg);
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 13px);
+      left: 50%;
+      z-index: 30;
+      width: 210px;
+      display: grid;
+      gap: 4px;
+      padding: 8px;
+      border: 1px solid rgba(23,21,15,.09);
+      border-radius: 20px;
+      background: rgba(255,250,240,.97);
+      box-shadow: 0 22px 54px rgba(78,62,35,.18);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, -8px);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu,
+    .nav-dropdown.is-open .nav-dropdown-menu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, 0);
+    }
+
+    .nav-dropdown-menu a {
+      display: grid;
+      gap: 2px;
+      padding: 11px 12px;
+      color: var(--ink);
+      border-radius: 13px;
+      font-size: .8rem;
+      line-height: 1.25;
+    }
+
+    .nav-dropdown-menu a:hover,
+    .nav-dropdown-menu a[aria-current="page"] {
+      background: rgba(201,162,98,.12);
+    }
+
+    .nav-dropdown-menu small {
+      color: var(--muted);
+      font-size: .68rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 980px) {
+      .nav-dropdown {
+        width: 100%;
+      }
+
+      .nav-dropdown-toggle {
+        width: 100%;
+        min-height: 48px;
+        justify-content: center;
+      }
+
+      .nav-dropdown-menu {
+        position: static;
+        width: 100%;
+        display: none;
+        margin-top: 5px;
+        opacity: 1;
+        pointer-events: auto;
+        transform: none;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.74);
+      }
+
+      .nav-dropdown:hover .nav-dropdown-menu,
+      .nav-dropdown:focus-within .nav-dropdown-menu {
+        display: none;
+        transform: none;
+      }
+
+      .nav-dropdown.is-open .nav-dropdown-menu {
+        display: grid;
+        transform: none;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/site-system.css">
+  <link rel="stylesheet" href="assets/site-footer.css">
+  <script src="assets/site-ui.js" defer></script>
+</head>
+
+<body class="site-page site-page-about">
+  <div class="reading-progress" aria-hidden="true"></div>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header">
+    <nav class="navbar" aria-label="Navigation principale">
+      <a class="brand" href="index.html#accueil" aria-label="Le site de Therapiego — Accueil">
+        <img class="brand-avatar" src="assets/therapiego-avatar-navbar.webp" width="231" height="256" alt="" decoding="async">
+        <span class="brand-copy">
+          <span class="brand-name">Le site de</span>
+          <span class="brand-sub">Therapiego</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Ouvrir le menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links" id="primary-navigation">
+        <a href="index.html#accueil">Accueil</a>
+        <div class="nav-dropdown is-current">
+          <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="about-dropdown-about">À propos</button>
+          <div class="nav-dropdown-menu" id="about-dropdown-about">
+            <a href="a-propos.html" aria-current="page">Therapiego<small>Parcours et vision</small></a>
+            <a href="ma-methode.html">Ma méthode<small>Approche pédagogique</small></a>
+          </div>
+        </div>
+        <a href="index.html#temoignages">Avis</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <a class="nav-cta" href="https://cal.com/therapiego/1er-echange" target="_blank" rel="noopener noreferrer">Prendre contact <span class="button-arrow" aria-hidden="true">→</span></a>
+    </nav>
+  </header>
+
+  <main id="contenu">
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Therapiego · À propos</p>
+        <h1 id="page-title">Camille<br>Berthon.</h1>
+        <p class="hero-lead">Je m’appelle <strong>Camille Berthon</strong>, <strong>professeur et coach de Go</strong>. Ce jeu accompagne ma vie depuis 2007 et guide aujourd’hui mon travail : aider chaque joueur à progresser avec clarté, méthode et plaisir.</p>
+        <div class="hero-meta" aria-label="Repères du parcours">
+          <span>3e dan FFG</span>
+          <span>Enseignant depuis 2012</span>
+          <span>Du débutant au 1er dan</span>
+        </div>
+      </div>
+
+      <figure class="portrait-card">
+        <picture>
+          <img src="assets/therapiego-avatar-navbar.webp" width="231" height="256" alt="Logo illustré de Therapiego" fetchpriority="high" decoding="async">
+        </picture>
+        <figcaption class="portrait-caption">
+          <span>
+            <strong>Avancer pierre après pierre</strong>
+            <small>Comprendre son jeu pour franchir la prochaine marche.</small>
+          </span>
+          <span class="stone-mark" aria-hidden="true"></span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <div class="story-shell">
+      <aside class="toc" aria-label="Sommaire de la page">
+        <p class="toc-label">Le Go, comme fil rouge.</p>
+        <ol>
+          <li><a href="#parcours"><span>01</span>Mon parcours</a></li>
+          <li><a href="#vision"><span>02</span>Ma vision du Go</a></li>
+          <li><a href="#envie"><span>03</span>Donner envie de jouer</a></li>
+          <li><a href="#approche"><span>04</span>Une approche individualisée</a></li>
+          <li><a href="#mental"><span>05</span>Analyse et construction mentale</a></li>
+          <li><a href="#tsumego"><span>06</span>Tsumego et résolution</a></li>
+          <li><a href="#ia"><span>07</span>L’IA dans l’apprentissage</a></li>
+          <li><a href="#rapport"><span>08</span>Mon rapport au Go</a></li>
+          <li><a href="#youtube"><span>09</span>YouTube et transmission</a></li>
+          <li><a href="#projet"><span>10</span>Un projet de vie</a></li>
+          <li><a href="#public"><span>11</span>À qui s’adressent mes cours ?</a></li>
+          <li><a href="#apporter"><span>12</span>Ce que je veux apporter</a></li>
+        </ol>
+      </aside>
+
+      <article class="article">
+        <section class="chapter" id="parcours">
+          <span class="chapter-number">01 — PARCOURS</span>
+          <h2>Une vie accompagnée par le Go</h2>
+          <p>Je m’appelle Camille Berthon, professeur et coach de Go.</p>
+          <p>J’ai découvert le jeu de Go en 2007, puis j’ai commencé à m’y investir sérieusement à partir de 2010. Depuis, ce jeu n’a jamais vraiment quitté ma vie. J’ai commencé à l’enseigner en 2012, d’abord naturellement, parce que j’ai toujours aimé transmettre des connaissances, puis de manière de plus en plus structurée au fil des années.</p>
+          <p>Aujourd’hui, je suis 3e dan FFG, et j’accompagne des joueurs de tous niveaux, du débutant jusqu’aux joueurs qui souhaitent viser le 1er dan.</p>
+          <p>Mon parcours s’est construit à travers la pratique, les rencontres et l’enseignement. J’ai notamment eu la chance de prendre des cours privés avec Fan Hui et de faire partie de son académie. J’ai aussi été membre du club de Go de Lyon de 2013 à 2022, une période importante dans ma progression et dans ma manière de penser le jeu.</p>
+          <p>Mais au-delà du niveau ou du parcours, ce qui m’intéresse profondément, c’est la manière dont un joueur progresse réellement.</p>
+        </section>
+
+        <section class="chapter" id="vision">
+          <span class="chapter-number">02 — VISION</span>
+          <h2>Ma vision du Go</h2>
+          <p>Pour moi, progresser au Go ne consiste pas à accumuler des séquences, des joseki ou des réponses toutes faites. Le Go est un jeu que l’on comprend souvent en faisant.</p>
+          <p>Il faut jouer, se tromper, revoir ses parties, puis recommencer avec un regard un peu plus clair. C’est une progression par expérience, pas seulement par théorie.</p>
+          <p>Je crois beaucoup à une progression simple et solide. Il ne s’agit pas de brûler les étapes, mais d’atteindre la prochaine marche. Un joueur n’a pas besoin de tout comprendre immédiatement. Il a surtout besoin de savoir ce qui bloque maintenant, ce qu’il doit corriger en priorité, et dans quelle direction avancer.</p>
+          <p>Mais je vois aussi le Go comme une aventure.</p>
+          <p>Une partie n’est pas seulement un exercice à réussir ou à rater. C’est un chemin dans lequel on avance pierre après pierre, avec ses intuitions, ses doutes et ses découvertes. On trébuche parfois. On joue trop vite, on se trompe de direction, on défend trop tard. Mais ce n’est pas un échec stérile : c’est précisément ce qui donne de la matière à la progression.</p>
+          <p class="pullquote">Cette attitude est essentielle pour moi : ne pas avoir peur de se tromper.</p>
+          <p>Chaque partie, même imparfaite, peut apprendre quelque chose. C’est ce rapport au jeu qui rend la progression belle : on ne cherche pas seulement à éviter les erreurs, on apprend à les transformer en compréhension.</p>
+          <p>C’est souvent là que mon rôle intervient.</p>
+          <p>Dans une partie ou dans la progression d’un élève, j’essaie de repérer rapidement le point névralgique : le blocage principal, l’habitude qui risque de freiner la suite. Parfois, ce n’est pas une erreur spectaculaire. C’est une manière de penser, une peur de jouer simple, ou une difficulté à accepter les compromis.</p>
+          <p>Mon objectif n’est pas de tout corriger d’un coup. Mon objectif est de trouver ce qui, une fois compris, peut vraiment débloquer la suite.</p>
+        </section>
+
+        <section class="chapter" id="envie">
+          <span class="chapter-number">03 — ENVIE</span>
+          <h2>Donner envie de placer des pierres</h2>
+          <p>Avant même de parler de performance, de niveau ou de résultat, ma mission principale est simple : donner envie de jouer.</p>
+          <p>Donner envie de poser des pierres sur un goban. Donner envie d’essayer des idées, de revenir sur ses parties, de découvrir une forme, de résoudre un problème, puis de rejouer avec un peu plus de clarté.</p>
+          <p>Je pense que beaucoup de choses viennent naturellement quand cette envie est là. Un joueur motivé, curieux et actif progresse mieux qu’un joueur crispé par la peur de mal faire.</p>
+          <p>Le Go demande de la rigueur, mais il ne devrait pas devenir une activité tendue. On progresse mieux quand on accepte d’explorer. Une mauvaise partie peut devenir une excellente partie d’apprentissage. Une erreur peut devenir un repère. Une défaite peut révéler ce qu’on n’arrivait pas encore à voir.</p>
+          <p>C’est aussi pour cela que j’accorde beaucoup d’importance à la clarté. Le Go peut sembler immense, parfois intimidant. Mon travail consiste à rendre cette complexité plus lisible, sans la réduire à des recettes artificielles.</p>
+        </section>
+
+        <section class="chapter" id="approche">
+          <span class="chapter-number">04 — ADAPTATION</span>
+          <h2>Une approche individualisée</h2>
+          <p>Je ne propose pas une méthode unique que j’applique de la même manière à tous les élèves.</p>
+          <p>Mon accompagnement repose d’abord sur l’adaptation. J’essaie de comprendre le joueur en face de moi : son niveau, son rapport au jeu, ses ambitions, ses habitudes et ses blocages. Ensuite, je construis le cours autour de ce qui lui sera réellement utile.</p>
+          <p>Aujourd’hui, je propose principalement des cours individuels.</p>
+          <p>Ces cours s’appuient surtout sur l’analyse de parties, les explications ciblées, les vidéos de review, les fiches de synthèse, et un suivi par Discord pendant la période de cours. L’élève peut aussi me poser des questions entre les séances, notamment avec des diagrammes à l’appui.</p>
+          <p>Une grande partie de mon travail consiste à aider l’élève à devenir plus autocritique, dans le bon sens du terme. Il ne s’agit pas de se juger durement, mais d’apprendre à observer son jeu avec précision.</p>
+          <p class="questions">Pourquoi ai-je perdu cette partie ? Qu’est-ce qui s’est répété ? À quel moment ai-je perdu le fil ? Qu’est-ce que je dois travailler maintenant ?</p>
+          <p>Quand un joueur commence à mieux répondre à ces questions, il devient plus autonome. Et c’est souvent là que la progression devient plus saine.</p>
+        </section>
+
+        <section class="chapter" id="mental">
+          <span class="chapter-number">05 — MENTAL</span>
+          <h2>Analyse de parties et construction mentale</h2>
+          <p>Mon enseignement repose beaucoup sur l’analyse de parties, mais pas seulement pour dire “ce coup est mauvais” ou “ce coup est meilleur”.</p>
+          <p>Ce qui m’intéresse, c’est de reconstruire le raisonnement du joueur.</p>
+          <p>Un mauvais coup n’est pas seulement un mauvais coup. C’est souvent la trace d’une mauvaise priorité, d’une peur, d’un automatisme ou d’une lecture incomplète. En comprenant pourquoi ce coup a été joué, on peut travailler bien plus profondément que si l’on se contente de donner la bonne réponse.</p>
+          <p>J’accorde aussi beaucoup d’importance à la construction mentale.</p>
+          <p>Au Go, il faut être pleinement dans la partie, mais il faut aussi apprendre à garder une petite distance. J’aime souvent parler de cette idée : être à la fois le joueur et l’observateur.</p>
+          <p>Le joueur vit la partie. Il calcule, il ressent la pression, il choisit une direction, il accepte le combat.</p>
+          <p>L’observateur, lui, prend un léger recul. Il regarde ce qui est en train de se passer. Il remarque la peur, la précipitation, l’envie de sauver une pierre inutile, ou le moment où l’on commence à perdre le fil.</p>
+          <p>Cette distance ne sert pas à jouer froidement ou mécaniquement. Au contraire, elle permet de se détacher juste ce qu’il faut pour pouvoir jouer pleinement son jeu. Ne pas être avalé par l’émotion de la partie. Ne pas subir chaque erreur comme une catastrophe.</p>
+          <p class="pullquote">Apprendre à être joueur et observateur à la fois, c’est apprendre à rester lucide sans perdre l’engagement.</p>
+          <p>C’est une compétence essentielle pour progresser durablement.</p>
+          <p>Le Go est un jeu stratégique, mais c’est aussi un jeu d’attitude. La manière dont on pense influence directement la manière dont on joue.</p>
+        </section>
+
+        <section class="chapter" id="tsumego">
+          <span class="chapter-number">06 — LECTURE</span>
+          <h2>Tsumego et méthode de résolution</h2>
+          <p>J’ai aussi un intérêt particulier pour les tsumego.</p>
+          <p>Pas seulement comme exercices de calcul, mais comme outil pédagogique. Beaucoup de joueurs font des tsumego sans vraie méthode : ils regardent, devinent, essaient un coup, puis vérifient la réponse. Cette manière de faire peut être utile au début, mais elle atteint vite ses limites.</p>
+          <p>J’aime expliquer comment résoudre un problème. Il ne s’agit pas seulement de trouver le bon coup, mais de comprendre comment chercher : repérer les coups candidats, lire les réponses importantes, et éviter de sauter trop vite à une conclusion.</p>
+          <p>Les tsumego ne servent pas seulement à “calculer plus loin”. Ils apprennent à penser plus proprement.</p>
+          <p>Ils apprennent aussi à accepter l’effort. On ne trouve pas toujours immédiatement. On peut se tromper, revenir en arrière, relire une variation. Là encore, l’erreur n’est pas un problème : elle fait partie du chemin.</p>
+        </section>
+
+        <section class="chapter" id="ia">
+          <span class="chapter-number">07 — OUTILS</span>
+          <h2>L’IA dans l’apprentissage</h2>
+          <p>J’utilise l’IA, notamment les outils modernes d’analyse, de manière quotidienne dans mon propre travail. Mais je ne l’utilise pas directement comme base principale de cours.</p>
+          <p>Je suis même souvent prudent avec son usage chez les élèves.</p>
+          <p>Avant un certain niveau, l’IA peut donner beaucoup de réponses sans donner suffisamment de compréhension. Elle peut montrer qu’un coup est meilleur, mais pas toujours expliquer clairement pourquoi ce coup est adapté à l’élève, à son niveau ou à son étape de progression.</p>
+          <p>Je conseille donc généralement aux joueurs de ne pas utiliser l’IA seuls trop tôt, ou alors de faire vérifier et discuter ce qu’ils pensent avoir compris avec un professeur.</p>
+          <p class="pullquote">L’IA peut être un outil puissant. Mais mal utilisée, elle peut aussi brouiller les priorités.</p>
+          <p>Elle peut donner envie de chercher le meilleur coup avant même d’avoir compris le bon problème.</p>
+        </section>
+
+        <section class="chapter" id="rapport">
+          <span class="chapter-number">08 — PASSION</span>
+          <h2>Mon rapport personnel au Go</h2>
+          <p>Le Go est aussi, pour moi, une manière de rester connecté à la culture asiatique, que j’ai toujours beaucoup aimée. C’est un jeu ancien, sobre, profond, et pourtant incroyablement vivant.</p>
+          <p>J’aime sa capacité à repousser les limites : calcul, stratégie, intuition, patience, concentration, flow. Une partie peut être très calme en apparence, tout en demandant une intensité mentale immense.</p>
+          <p>J’aime aussi le fait que le Go soit un jeu propice au partage. On peut discuter d’une partie pendant des heures, comparer deux idées, revoir une position, apprendre d’un joueur plus fort ou aider un joueur moins avancé. Parfois, on peut même partager quelque chose autour d’un goban sans parler la même langue.</p>
+          <p>C’est une des grandes forces du jeu : il crée un espace commun.</p>
+          <p>Pour moi, cette dimension d’aventure est centrale. Le Go n’est pas seulement une montagne à gravir pour obtenir un niveau. C’est un territoire à explorer. Chaque joueur y avance avec son rythme, ses questions, ses blocages et ses moments de clarté.</p>
+        </section>
+
+        <section class="chapter" id="youtube">
+          <span class="chapter-number">09 — TRANSMISSION</span>
+          <h2>YouTube et transmission</h2>
+          <p>En parallèle des cours, je publie aussi du contenu pédagogique sur YouTube autour du jeu de Go.</p>
+          <p>J’ai toujours aimé créer des vidéos avec l’objectif de rendre le jeu plus accessible, plus compréhensible et plus vivant. J’essaie souvent de simplifier au maximum la manière d’aborder une idée, un concept ou une position.</p>
+          <p>Mais il m’arrive aussi d’aller dans l’autre direction : produire des vidéos beaucoup plus techniques, très denses, pour les joueurs qui veulent vraiment creuser.</p>
+          <p>Dans les deux cas, l’objectif reste le même : transmettre quelque chose d’utile, et donner envie de regarder le goban avec plus d’attention.</p>
+        </section>
+
+        <section class="chapter" id="projet">
+          <span class="chapter-number">10 — PROJET</span>
+          <h2>Un projet de vie</h2>
+          <p>En 2025, j’ai créé mon entreprise avec un objectif clair : construire une activité professionnelle autour de l’enseignement du Go, et avancer vers la possibilité de vivre de cette passion.</p>
+          <p>Ce projet est encore en construction, mais il est au centre de mon travail aujourd’hui.</p>
+          <p>Enseigner le Go n’est pas simplement une activité annexe pour moi. C’est une direction que je poursuis sérieusement, avec l’envie d’accompagner des joueurs sur la durée, de créer des ressources utiles, et de contribuer à mon échelle au développement du Go francophone.</p>
+        </section>
+
+        <section class="chapter" id="public">
+          <span class="chapter-number">11 — ACCOMPAGNEMENT</span>
+          <h2>À qui s’adresse mon accompagnement ?</h2>
+          <p>Mes cours s’adressent aux joueurs qui veulent progresser avec sérieux, sans chercher une progression artificielle ou spectaculaire.</p>
+          <p>J’accompagne aussi bien les débutants que les joueurs plus avancés, jusqu’à ceux qui souhaitent viser le 1er dan. Mais il y a une condition importante : il faut jouer.</p>
+          <p>Un joueur qui ne peut pas jouer régulièrement aura du mal à tirer pleinement profit d’un accompagnement. Pour progresser au Go, il faut de la matière : des parties, des erreurs, des questions, des positions à revoir.</p>
+          <p>J’apprécie particulièrement les élèves qui prennent le temps de réfléchir à leurs questions. Ceux qui reviennent avec une position précise, ou qui sentent qu’un point les bloque depuis quelque temps et veulent vraiment comprendre ce qui se passe.</p>
+          <p>Mais j’aide tous les profils, à partir du moment où l’envie de progresser est réelle.</p>
+        </section>
+
+        <section class="chapter" id="apporter">
+          <span class="chapter-number">12 — INTENTION</span>
+          <h2>Ce que je veux apporter</h2>
+          <p>Mon objectif n’est pas seulement de vous montrer de meilleurs coups.</p>
+          <p>Je veux vous aider à mieux comprendre votre propre jeu.</p>
+          <p>Cela signifie repérer vos blocages, clarifier vos décisions, construire une progression adaptée à votre niveau et apprendre à transformer vos erreurs en matière de travail.</p>
+          <p>Je veux aussi vous aider à devenir à la fois acteur de vos parties et observateur de votre progression : jouer pleinement, tout en gardant assez de recul pour comprendre ce qui se passe.</p>
+          <p>Le Go est un jeu immense. On ne le maîtrise pas en quelques cours. Mais on peut apprendre à l’aborder avec plus de clarté, plus de méthode et plus de plaisir.</p>
+          <div class="closing-lines">
+            <span>On peut apprendre à avancer sans avoir peur de trébucher.</span>
+            <span>On peut apprendre à faire de chaque partie une étape.</span>
+            <span>On peut apprendre à aimer le chemin autant que le résultat.</span>
+          </div>
+          <p>Et souvent, c’est exactement ce dont un joueur a besoin pour franchir la prochaine marche.</p>
+        </section>
+      </article>
+    </div>
+
+    <section class="final-cta" aria-labelledby="cta-title">
+      <div>
+        <h2 id="cta-title">Prêt à franchir la prochaine marche ?</h2>
+        <p>Un accompagnement individuel pour comprendre vos blocages, structurer votre progression et garder l’envie de poser des pierres.</p>
+      </div>
+      <a class="button" href="https://cal.com/therapiego/1er-echange" target="_blank" rel="noopener noreferrer">Prendre contact <span class="button-arrow" aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer class="site-footer-premium">
+    <div class="site-footer-inner">
+      <div class="site-footer-intro">
+        <div class="site-footer-brand-block">
+          <a class="site-footer-brand" href="index.html#accueil" aria-label="Le site de Therapiego — Accueil">
+            <img class="site-footer-brand-avatar" src="assets/therapiego-avatar-navbar.webp" width="231" height="256" alt="" loading="lazy" decoding="async">
+            <span class="site-footer-brand-copy"><span class="site-footer-brand-overline">Le site de</span><span class="site-footer-brand-name">Therapiego</span></span>
+          </a>
+          <p class="site-footer-tagline">Des cours de Go clairs et personnalisés pour comprendre votre jeu, progresser avec méthode et garder le plaisir de poser des pierres.</p>
+        </div>
+        <a class="site-footer-cta" href="https://cal.com/therapiego/1er-echange" target="_blank" rel="noopener noreferrer">Prendre contact <span class="button-arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div class="site-footer-grid">
+        <nav class="site-footer-column" aria-label="Navigation du pied de page"><h2>Navigation</h2><div class="site-footer-links"><a href="index.html#accueil">Accueil</a><a href="a-propos.html">Therapiego</a><a href="ma-methode.html">Ma méthode</a><a href="index.html#temoignages">Avis</a><a href="contact.html">Contact</a></div></nav>
+        <section class="site-footer-column"><h2>Contact</h2><a class="site-footer-email" href="mailto:therapiego@gmail.com">therapiego@gmail.com</a><a class="site-footer-booking" href="https://cal.com/therapiego/1er-echange" target="_blank" rel="noopener noreferrer">Premier échange sur Cal.com ↗</a></section>
+        <section class="site-footer-column"><h2>En ligne</h2><div class="site-footer-socials"><a class="site-footer-social" href="https://www.twitch.tv/therapiego" target="_blank" rel="noopener noreferrer" aria-label="Twitch"><img class="site-footer-social-logo" src="assets/social-twitch.webp" width="96" height="96" alt="" loading="lazy" decoding="async"></a><a class="site-footer-social" href="https://www.youtube.com/@TherapieGo" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><img class="site-footer-social-logo" src="assets/social-youtube.webp" width="96" height="96" alt="" loading="lazy" decoding="async"></a><a class="site-footer-social" href="https://discord.com/invite/KNVcF8d" target="_blank" rel="noopener noreferrer" aria-label="Discord"><img class="site-footer-social-logo" src="assets/social-discord.webp" width="96" height="96" alt="" loading="lazy" decoding="async"></a></div></section>
+        <nav class="site-footer-column" aria-label="Informations légales"><h2>Informations légales</h2><div class="site-footer-links"><a href="mentions-legales.html">Mentions légales</a><a href="cgv.html">Conditions générales de vente</a><a href="confidentialite.html">Confidentialité</a></div></nav>
+      </div>
+      <div class="site-footer-bottom"><span>© 2026 Therapiego · Tous droits réservés.</span><span>Camille Berthon · Professeur et coach de Go · 3e dan FFG</span></div>
+    </div>
+  </footer>
+
+  <a class="site-back-to-top" href="#contenu" data-back-to-top aria-label="Revenir en haut de la page" aria-hidden="true" tabindex="-1"><span class="site-back-to-top-mark" aria-hidden="true">↑</span><span class="site-back-to-top-label">Haut de page</span></a>
+
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const aboutDropdown = document.querySelector('.nav-dropdown');
+    const aboutDropdownToggle = document.querySelector('.nav-dropdown-toggle');
+
+    function setAboutDropdown(open) {
+      if (!aboutDropdown || !aboutDropdownToggle) return;
+      aboutDropdown.classList.toggle('is-open', open);
+      aboutDropdownToggle.setAttribute('aria-expanded', String(open));
+    }
+
+    navToggle?.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+    });
+
+    navLinks?.addEventListener('click', () => {
+      setAboutDropdown(false);
+      navLinks.classList.remove('is-open');
+      navToggle?.setAttribute('aria-expanded', 'false');
+      navToggle?.setAttribute('aria-label', 'Ouvrir le menu');
+    });
+
+    aboutDropdownToggle?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      setAboutDropdown(!aboutDropdown.classList.contains('is-open'));
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!aboutDropdown?.contains(event.target)) setAboutDropdown(false);
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setAboutDropdown(false);
+    });
+
+    const progressBar = document.querySelector('.reading-progress');
+    const chapters = [...document.querySelectorAll('.chapter')];
+    const tocLinks = [...document.querySelectorAll('.toc a')];
+
+    function updateReadingProgress() {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+      progressBar?.style.setProperty('--reading-progress', String(progress));
+    }
+
+    const chapterObserver = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (!visible) return;
+
+      tocLinks.forEach((link) => {
+        const isActive = link.getAttribute('href') === `#${visible.target.id}`;
+        link.classList.toggle('is-active', isActive);
+        if (isActive) {
+          link.setAttribute('aria-current', 'location');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+    }, {
+      rootMargin: '-18% 0px -58% 0px',
+      threshold: [0, .15, .35, .6]
+    });
+
+    chapters.forEach((chapter) => chapterObserver.observe(chapter));
+    window.addEventListener('scroll', updateReadingProgress, { passive: true });
+    window.addEventListener('resize', updateReadingProgress);
+    updateReadingProgress();
+  </script>
+</body>
+</html>

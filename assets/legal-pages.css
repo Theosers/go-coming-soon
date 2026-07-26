@@ -1,0 +1,731 @@
+:root {
+  --legal-ink: #17150f;
+  --legal-muted: #6d675a;
+  --legal-cream: #fffaf0;
+  --legal-cream-2: #f4ead9;
+  --legal-paper: rgba(255, 253, 247, .88);
+  --legal-red: #3f725d;
+  --legal-red-dark: #2f5948;
+  --legal-gold: #c9a262;
+  --legal-jade: #3f725d;
+  --legal-line: rgba(23, 21, 15, .11);
+  --legal-shadow: 0 30px 90px rgba(71, 55, 28, .1);
+  --legal-container: min(1180px, calc(100% - 48px));
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 118px;
+  background: var(--legal-cream);
+}
+
+body {
+  min-height: 100vh;
+  color: var(--legal-ink);
+  background:
+    radial-gradient(circle at 90% 4%, rgba(63, 114, 93, .08), transparent 24rem),
+    radial-gradient(circle at 5% 34%, rgba(63, 114, 93, .08), transparent 27rem),
+    linear-gradient(180deg, #fffaf0 0%, #f4ead9 100%);
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .035;
+  background-image:
+    linear-gradient(var(--legal-ink) 1px, transparent 1px),
+    linear-gradient(90deg, var(--legal-ink) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, black, transparent 70%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  color: inherit;
+}
+
+::selection {
+  color: var(--legal-cream);
+  background: var(--legal-red);
+}
+
+.legal-skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1000;
+  padding: 12px 16px;
+  color: #fff;
+  border-radius: 10px;
+  background: var(--legal-ink);
+  transform: translateY(-160%);
+  transition: transform 180ms ease;
+}
+
+.legal-skip-link:focus {
+  transform: none;
+}
+
+.legal-progress {
+  --legal-progress: 0;
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 300;
+  height: 3px;
+  background: linear-gradient(90deg, var(--legal-red), var(--legal-gold));
+  transform: scaleX(var(--legal-progress));
+  transform-origin: left;
+}
+
+.legal-site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 18px 0 10px;
+}
+
+.legal-navbar {
+  width: var(--legal-container);
+  min-height: 72px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 28px;
+  padding: 10px 12px 10px 14px;
+  border: 1px solid rgba(23, 21, 15, .08);
+  border-radius: 24px;
+  background: rgba(255, 250, 240, .9);
+  box-shadow: 0 16px 48px rgba(57, 43, 22, .09);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.legal-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  min-width: max-content;
+}
+
+.legal-brand-avatar {
+  width: 50px;
+  height: 50px;
+  padding: 3px;
+  border: 1px solid rgba(201, 162, 98, .34);
+  border-radius: 16px;
+  background: #fff;
+  object-fit: contain;
+}
+
+.legal-brand-copy {
+  display: grid;
+  gap: 1px;
+  line-height: 1;
+}
+
+.legal-brand-overline {
+  color: var(--legal-muted);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.legal-brand-name {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+
+.legal-nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.legal-nav-links > a,
+.legal-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 14px;
+  color: rgba(23, 21, 15, .67);
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: .84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 180ms ease;
+}
+
+.legal-nav-links > a:hover,
+.legal-dropdown-toggle:hover,
+.legal-dropdown:hover .legal-dropdown-toggle,
+.legal-dropdown:focus-within .legal-dropdown-toggle,
+.legal-dropdown.is-open .legal-dropdown-toggle {
+  color: var(--legal-ink);
+  background: rgba(239, 224, 201, .72);
+}
+
+.legal-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 19px;
+  color: #fffaf0;
+  border: 1px solid var(--legal-red);
+  border-radius: 999px;
+  background: var(--legal-red);
+  box-shadow: 0 12px 28px rgba(63, 114, 93, .2);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: .8rem;
+  font-weight: 700;
+  transition: 180ms ease;
+}
+
+.legal-nav-cta:hover {
+  color: #fffaf0;
+  border-color: var(--legal-red-dark);
+  background: var(--legal-red-dark);
+  transform: translateY(-2px);
+}
+
+.legal-nav-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  place-content: center;
+  gap: 5px;
+  border: 1px solid var(--legal-line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .55);
+  cursor: pointer;
+}
+
+.legal-nav-toggle span {
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--legal-ink);
+}
+
+.legal-dropdown {
+  position: relative;
+}
+
+.legal-dropdown-toggle::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 180ms ease;
+}
+
+.legal-dropdown.is-open .legal-dropdown-toggle::after {
+  margin-top: 3px;
+  transform: rotate(225deg);
+}
+
+.legal-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 13px);
+  left: 50%;
+  z-index: 30;
+  width: 210px;
+  display: grid;
+  gap: 4px;
+  padding: 8px;
+  border: 1px solid rgba(23, 21, 15, .09);
+  border-radius: 20px;
+  background: rgba(255, 250, 240, .97);
+  box-shadow: 0 22px 54px rgba(78, 62, 35, .18);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -8px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.legal-dropdown:hover .legal-dropdown-menu,
+.legal-dropdown:focus-within .legal-dropdown-menu,
+.legal-dropdown.is-open .legal-dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.legal-dropdown-menu a {
+  display: grid;
+  gap: 2px;
+  padding: 11px 12px;
+  border-radius: 13px;
+  color: var(--legal-ink);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+.legal-dropdown-menu a:hover {
+  background: rgba(201, 162, 98, .12);
+}
+
+.legal-dropdown-menu small {
+  color: var(--legal-muted);
+  font-size: .68rem;
+  font-weight: 500;
+}
+
+.legal-main {
+  width: var(--legal-container);
+  margin-inline: auto;
+  padding: 78px 0 110px;
+}
+
+.legal-hero {
+  max-width: 980px;
+  padding-bottom: 62px;
+}
+
+.legal-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  color: var(--legal-red);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: .74rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.legal-eyebrow::before {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: currentColor;
+}
+
+.legal-hero h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  line-height: .9;
+  letter-spacing: -.07em;
+}
+
+.legal-intro {
+  max-width: 760px;
+  margin-top: 28px;
+  color: var(--legal-muted);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.18rem);
+  line-height: 1.75;
+}
+
+.legal-date {
+  display: inline-flex;
+  margin-top: 22px;
+  padding: 8px 12px;
+  color: #76501e;
+  border: 1px solid rgba(201, 162, 98, .25);
+  border-radius: 999px;
+  background: rgba(201, 162, 98, .1);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: .7rem;
+  font-weight: 700;
+}
+
+.legal-layout {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(40px, 7vw, 96px);
+}
+
+.legal-toc {
+  position: sticky;
+  top: 118px;
+  padding: 22px;
+  border: 1px solid var(--legal-line);
+  border-radius: 24px;
+  background: rgba(255, 253, 247, .64);
+}
+
+.legal-toc h2 {
+  margin-bottom: 14px;
+  color: var(--legal-muted);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: .66rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.legal-toc ol {
+  display: grid;
+  gap: 3px;
+  list-style: none;
+}
+
+.legal-toc a {
+  display: block;
+  padding: 8px 9px;
+  color: var(--legal-muted);
+  border-radius: 10px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: .74rem;
+  line-height: 1.35;
+  transition: 160ms ease;
+}
+
+.legal-toc a:hover {
+  color: var(--legal-ink);
+  background: rgba(201, 162, 98, .1);
+}
+
+.legal-document {
+  min-width: 0;
+  padding: clamp(28px, 5vw, 64px);
+  border: 1px solid rgba(23, 21, 15, .09);
+  border-radius: 38px;
+  background: var(--legal-paper);
+  box-shadow: var(--legal-shadow);
+}
+
+.legal-alert {
+  margin-bottom: 42px;
+  padding: 20px 22px;
+  color: #6e4b19;
+  border: 1px solid rgba(201, 162, 98, .34);
+  border-radius: 18px;
+  background: rgba(234, 213, 173, .28);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: .86rem;
+  line-height: 1.6;
+}
+
+.legal-alert strong {
+  color: var(--legal-ink);
+}
+
+.legal-section {
+  padding: 38px 0;
+  border-top: 1px solid var(--legal-line);
+}
+
+.legal-section:first-of-type {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.legal-section h2 {
+  margin-bottom: 20px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -.045em;
+}
+
+.legal-section h3 {
+  margin: 25px 0 10px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.08rem;
+  letter-spacing: -.02em;
+}
+
+.legal-section p,
+.legal-section li {
+  color: var(--legal-muted);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: .94rem;
+  line-height: 1.78;
+}
+
+.legal-section p + p {
+  margin-top: 13px;
+}
+
+.legal-section ul,
+.legal-section ol {
+  display: grid;
+  gap: 9px;
+  margin: 14px 0 0 21px;
+}
+
+.legal-section a {
+  color: var(--legal-red-dark);
+  text-decoration: underline;
+  text-decoration-color: rgba(47, 89, 72, .28);
+  text-underline-offset: 3px;
+}
+
+.legal-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.legal-detail {
+  padding: 17px 18px;
+  border: 1px solid var(--legal-line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .42);
+}
+
+.legal-detail dt {
+  margin-bottom: 5px;
+  color: var(--legal-muted);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.legal-detail dd {
+  color: var(--legal-ink);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: .9rem;
+  font-weight: 650;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.legal-missing {
+  color: #9d2d25;
+  font-weight: 800;
+}
+
+.legal-price-table,
+.legal-data-table {
+  width: 100%;
+  margin-top: 18px;
+  overflow: hidden;
+  border-collapse: collapse;
+  border: 1px solid var(--legal-line);
+  border-radius: 16px;
+}
+
+.legal-price-table th,
+.legal-price-table td,
+.legal-data-table th,
+.legal-data-table td {
+  padding: 14px 15px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--legal-line);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: .82rem;
+  line-height: 1.5;
+}
+
+.legal-price-table th,
+.legal-data-table th {
+  color: var(--legal-ink);
+  background: rgba(201, 162, 98, .12);
+  font-weight: 800;
+}
+
+.legal-price-table td,
+.legal-data-table td {
+  color: var(--legal-muted);
+}
+
+.legal-price-table tr:last-child td,
+.legal-data-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.legal-form {
+  margin-top: 20px;
+  padding: 22px;
+  border: 1px dashed rgba(23, 21, 15, .24);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .34);
+}
+
+.legal-form p {
+  color: var(--legal-ink);
+}
+
+@media (max-width: 980px) {
+  .legal-navbar {
+    grid-template-columns: auto auto 1fr;
+  }
+
+  .legal-nav-toggle {
+    display: grid;
+    justify-self: end;
+  }
+
+  .legal-nav-links {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 24px;
+    right: 24px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px;
+    border: 1px solid var(--legal-line);
+    border-radius: 22px;
+    background: rgba(255, 250, 240, .98);
+    box-shadow: 0 24px 64px rgba(57, 43, 22, .15);
+  }
+
+  .legal-nav-links.is-open {
+    display: flex;
+  }
+
+  .legal-nav-links > a,
+  .legal-dropdown-toggle {
+    width: 100%;
+    min-height: 46px;
+    justify-content: center;
+  }
+
+  .legal-nav-cta {
+    justify-self: end;
+  }
+
+  .legal-dropdown {
+    width: 100%;
+  }
+
+  .legal-dropdown-menu {
+    position: static;
+    width: 100%;
+    display: none;
+    margin-top: 5px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .72);
+  }
+
+  .legal-dropdown:hover .legal-dropdown-menu,
+  .legal-dropdown:focus-within .legal-dropdown-menu {
+    display: none;
+    transform: none;
+  }
+
+  .legal-dropdown.is-open .legal-dropdown-menu {
+    display: grid;
+    transform: none;
+  }
+
+  .legal-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .legal-toc {
+    position: static;
+  }
+
+  .legal-toc ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  :root {
+    --legal-container: min(100% - 28px, 1180px);
+  }
+
+  .legal-site-header {
+    padding-top: 10px;
+  }
+
+  .legal-navbar {
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    border-radius: 20px;
+  }
+
+  .legal-nav-cta {
+    display: none;
+  }
+
+  .legal-main {
+    padding-top: 50px;
+  }
+
+  .legal-hero h1 {
+    font-size: clamp(3.1rem, 15vw, 5rem);
+  }
+
+  .legal-toc ol,
+  .legal-details {
+    grid-template-columns: 1fr;
+  }
+
+  .legal-document {
+    padding: 25px 20px;
+    border-radius: 26px;
+  }
+
+  .legal-price-table,
+  .legal-price-table tbody,
+  .legal-price-table tr,
+  .legal-price-table th,
+  .legal-price-table td,
+  .legal-data-table,
+  .legal-data-table tbody,
+  .legal-data-table tr,
+  .legal-data-table th,
+  .legal-data-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .legal-price-table thead,
+  .legal-data-table thead {
+    display: none;
+  }
+
+  .legal-price-table tr,
+  .legal-data-table tr {
+    border-bottom: 1px solid var(--legal-line);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: .01ms !important;
+  }
+}

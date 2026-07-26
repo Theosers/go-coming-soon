@@ -1,0 +1,198 @@
+.testimonial-carousel {
+  position: relative;
+  z-index: 2;
+  max-width: 1120px;
+  margin-inline: auto;
+}
+
+.testimonial-carousel-stage {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.testimonial-carousel-stage .testimonial-slide {
+  width: 100%;
+  min-height: 300px;
+  display: none;
+  flex: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(22px);
+}
+
+.testimonial-carousel-stage .testimonial-slide.is-active,
+.testimonial-carousel-stage .testimonial-slide.is-companion {
+  z-index: 2;
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0);
+  animation: testimonialCardIn 420ms var(--site-ease) both;
+}
+
+.testimonial-carousel-stage .testimonial-slide.is-active {
+  order: 1;
+}
+
+.testimonial-carousel-stage .testimonial-slide.is-companion {
+  order: 2;
+  animation-delay: 55ms;
+}
+
+@keyframes testimonialCardIn {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.testimonial-carousel-stage .testimonial-card p {
+  max-width: 100%;
+  font-size: clamp(1rem, 1.35vw, 1.12rem);
+  line-height: 1.65;
+}
+
+.testimonial-carousel-controls {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr) 46px;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.testimonial-carousel-arrow {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  color: #fffaf0;
+  border: 1px solid #3f725d;
+  border-radius: 50%;
+  background: #3f725d;
+  box-shadow:
+    0 12px 28px rgba(63, 114, 93, .2),
+    inset 0 1px 0 rgba(255, 255, 255, .16);
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    transform 180ms var(--site-ease),
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.testimonial-carousel-arrow:hover {
+  border-color: #2f5948;
+  background: #2f5948;
+  transform: translateY(-2px);
+}
+
+.testimonial-carousel-dots {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  padding: 5px;
+  border: 1px solid rgba(23, 21, 15, .09);
+  border-radius: 18px;
+  background: rgba(255, 250, 240, .56);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .72);
+}
+
+.testimonial-carousel-dot {
+  min-width: 0;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 7px 10px;
+  color: #6f6a5d;
+  border: 0;
+  border-radius: 13px;
+  background: transparent;
+  font-family: "IBM Plex Sans", sans-serif;
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.testimonial-carousel-dot span {
+  color: #3f725d;
+  font-size: .61rem;
+  font-weight: 850;
+}
+
+.testimonial-carousel-dot small {
+  overflow: hidden;
+  font-size: .7rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.testimonial-carousel-dot:hover,
+.testimonial-carousel-dot.is-active {
+  color: #17150f;
+  background: #fffaf0;
+  box-shadow:
+    0 8px 20px rgba(65, 45, 17, .08),
+    inset 0 0 0 1px rgba(23, 21, 15, .06);
+}
+
+.testimonial-carousel-arrow:focus-visible,
+.testimonial-carousel-dot:focus-visible {
+  outline: 3px solid rgba(63, 114, 93, .28);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .testimonial-carousel-stage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .testimonial-carousel-stage .testimonial-slide {
+    min-height: 340px;
+    padding: 24px;
+  }
+
+  .testimonial-carousel-stage .testimonial-slide.is-companion {
+    display: none;
+  }
+
+  .testimonial-carousel-controls {
+    grid-template-columns: 42px minmax(0, 1fr) 42px;
+    gap: 8px;
+  }
+
+  .testimonial-carousel-arrow {
+    width: 42px;
+    height: 42px;
+  }
+
+  .testimonial-carousel-dot {
+    min-height: 34px;
+    padding-inline: 6px;
+  }
+
+  .testimonial-carousel-dot small {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-carousel-stage .testimonial-slide,
+  .testimonial-carousel-arrow,
+  .testimonial-carousel-dot {
+    transition: none !important;
+    animation: none !important;
+  }
+}
