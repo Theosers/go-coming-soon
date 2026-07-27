@@ -6,6 +6,7 @@
 }
 
 .testimonial-carousel-stage {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
@@ -53,10 +54,53 @@
   }
 }
 
-.testimonial-carousel-stage .testimonial-card p {
+.testimonial-copy {
+  position: relative;
+  z-index: 2;
+  min-height: 0;
+  flex: 1 1 auto;
+  display: grid;
+  align-content: start;
+  gap: 13px;
+  overflow: hidden;
+}
+
+.testimonial-slide.is-truncated .testimonial-copy::after {
+  content: "...";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  padding: 0 4px 1px 24px;
+  color: #17150f;
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 250, 240, .96) 48%);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.58;
+}
+
+.testimonial-carousel-stage .testimonial-card .testimonial-copy p {
   max-width: 100%;
-  font-size: clamp(1rem, 1.35vw, 1.12rem);
-  line-height: 1.65;
+  font-size: clamp(.88rem, 1.08vw, .98rem);
+  line-height: 1.58;
+  text-wrap: pretty;
+}
+
+.testimonial-carousel-stage .testimonial-person {
+  flex: 0 0 auto;
+  padding-top: 18px;
+  border-top: 1px solid rgba(23, 21, 15, .08);
+}
+
+.testimonial-carousel-stage .testimonial-person time {
+  display: block;
+  margin-top: 3px;
+  color: #6f6a5d;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: .72rem;
+  line-height: 1.3;
 }
 
 .testimonial-carousel-controls {
@@ -96,7 +140,7 @@
 
 .testimonial-carousel-dots {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 8px;
   padding: 5px;
   border: 1px solid rgba(23, 21, 15, .09);
@@ -152,6 +196,12 @@
 .testimonial-carousel-dot:focus-visible {
   outline: 3px solid rgba(63, 114, 93, .28);
   outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .testimonial-carousel-dot small {
+    display: none;
+  }
 }
 
 @media (max-width: 640px) {

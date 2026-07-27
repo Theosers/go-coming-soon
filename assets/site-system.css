@@ -480,7 +480,20 @@ body.site-page button:focus-visible {
 }
 
 .site-page-home .hero {
-  padding-top: clamp(64px, 7vw, 92px);
+  padding-top: clamp(96px, 8vw, 116px);
+}
+
+.site-page-home .hero-inner {
+  align-items: start;
+}
+
+.site-page-home .hero-content {
+  display: grid;
+  justify-items: start;
+}
+
+.site-page-home .hero-visual {
+  align-self: center;
 }
 
 /* Appels à l’action de fin de page */
@@ -1103,12 +1116,52 @@ body.site-page ::selection {
   border-radius: 34px !important;
 }
 
+.site-page-home .pricing-grid-final {
+  grid-template-columns: minmax(0, .82fr) minmax(0, 1.12fr);
+  align-items: center;
+  gap: clamp(22px, 3vw, 34px);
+  max-width: 1040px;
+}
+
+.site-page-home .formation-card--simple {
+  min-height: 520px;
+  padding: 28px;
+}
+
+.site-page-home .formation-card--simple h3 {
+  margin-top: 4px;
+}
+
 .site-page-home .formation-card.featured {
+  min-height: 620px;
+  padding: clamp(34px, 4vw, 44px);
   border-color: rgba(63, 114, 93, .28) !important;
   background:
     radial-gradient(circle at 90% 6%, rgba(63, 114, 93, .13), transparent 18rem),
     linear-gradient(180deg, rgba(255, 255, 255, .52), rgba(255, 255, 255, .08)),
     rgba(255, 252, 245, .78) !important;
+  box-shadow:
+    0 38px 96px rgba(42, 72, 57, .17),
+    0 0 0 1px rgba(63, 114, 93, .12),
+    inset 0 1px 0 rgba(255, 255, 255, .92) !important;
+}
+
+.site-page-home .formation-card.featured .formation-label {
+  gap: 7px;
+  min-height: 34px;
+  padding-inline: 14px;
+  color: #fffaf0 !important;
+  border-color: #3f725d !important;
+  background: #3f725d !important;
+  box-shadow:
+    0 10px 24px rgba(63, 114, 93, .2),
+    inset 0 1px 0 rgba(255, 255, 255, .18);
+}
+
+.site-page-home .features li.feature-included {
+  color: #244b3a;
+  border-bottom-color: rgba(63, 114, 93, .16);
+  font-weight: 750;
 }
 
 .site-page-home .price {
@@ -1134,6 +1187,19 @@ body.site-page ::selection {
 .site-page-home .features li.feature-dojo > span {
   min-width: 0;
   white-space: nowrap !important;
+}
+
+@media (max-width: 760px) {
+  .site-page-home .pricing-grid-final {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 620px;
+  }
+
+  .site-page-home .formation-card--simple,
+  .site-page-home .formation-card.featured {
+    min-height: 0;
+    padding: 24px;
+  }
 }
 
 .site-page-home .price-options .price-row.has-saving {
@@ -1975,6 +2041,127 @@ body.site-page ::selection {
   transform: translateX(4px);
 }
 
+/* Accueil — sceau Igo et réseaux sociaux */
+.site-page-home .vertical-seal {
+  width: fit-content;
+  min-height: 0;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 13px;
+  margin: 0 0 26px;
+  padding: 14px 13px 14px 16px;
+  color: #d95048 !important;
+  border: 1px solid rgba(217, 80, 72, .42) !important;
+  border-radius: 20px;
+  background: #090a09 !important;
+  box-shadow:
+    0 20px 42px rgba(23, 21, 15, .2),
+    inset 0 1px 0 rgba(255, 255, 255, .08) !important;
+  writing-mode: horizontal-tb;
+  text-orientation: mixed;
+  transform: none;
+}
+
+.site-page-home .vertical-seal-kanji {
+  display: block;
+  color: #e0554d;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif CJK JP", serif;
+  font-size: clamp(2.45rem, 3.5vw, 3.15rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .04em;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  transform: translateY(-4px);
+}
+
+.site-page-home .vertical-seal-divider {
+  width: 1px;
+  height: 128px;
+  flex: 0 0 1px;
+  background: linear-gradient(180deg, transparent, rgba(224, 85, 77, .5), transparent);
+}
+
+.site-page-home .hero-socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.site-page-home .hero-social-link {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 250, 240, .13);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06);
+  transition:
+    transform 180ms var(--site-ease),
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.site-page-home .hero-social-link img {
+  width: 22px;
+  height: 22px;
+  display: block;
+  object-fit: contain;
+  transition: transform 180ms var(--site-ease);
+}
+
+.site-page-home .hero-social-link:hover {
+  border-color: rgba(224, 85, 77, .54);
+  background: rgba(224, 85, 77, .12);
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, .26),
+    inset 0 1px 0 rgba(255, 255, 255, .08);
+  transform: translateY(-3px);
+}
+
+.site-page-home .hero-social-link:hover img {
+  transform: scale(1.08);
+}
+
+.site-page-home .hero-social-link:focus-visible {
+  outline: 3px solid rgba(224, 85, 77, .36);
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .site-page-home .vertical-seal {
+    gap: 11px;
+    margin-bottom: 22px;
+    padding: 12px 11px 12px 14px;
+    transform: none;
+  }
+
+  .site-page-home .vertical-seal-kanji {
+    font-size: 2.3rem;
+    transform: translateY(-3px);
+  }
+
+  .site-page-home .vertical-seal-divider {
+    width: 1px;
+    height: 119px;
+  }
+
+  .site-page-home .hero-social-link {
+    width: 35px;
+    height: 35px;
+    border-radius: 11px;
+  }
+
+  .site-page-home .hero-social-link img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
 .site-page-home .about-sober-copy {
   position: relative;
   min-height: clamp(660px, 57vw, 820px);
@@ -2482,7 +2669,10 @@ body.site-page ::selection {
   width: fit-content;
   max-width: 100%;
   display: inline-flex;
+  justify-self: start;
   align-items: center;
+  margin-left: 0;
+  margin-right: 0;
   padding: 9px 14px;
   color: #244b3a !important;
   border: 1px solid rgba(63, 114, 93, .28);
@@ -2514,6 +2704,8 @@ body.site-page ::selection {
 
 .site-page-home .about-principles-list {
   gap: 7px;
+  min-height: 450px;
+  align-content: start;
 }
 
 .site-page-home .about-principle-row {
@@ -2613,6 +2805,14 @@ body.site-page ::selection {
   --testimonial-rgb: 91, 132, 166;
 }
 
+.site-page-home .testimonial-card--plum {
+  --testimonial-rgb: 142, 105, 153;
+}
+
+.site-page-home .testimonial-card--olive {
+  --testimonial-rgb: 123, 137, 78;
+}
+
 .site-page-home .testimonial-card::before {
   color: rgba(var(--testimonial-rgb), .25);
 }
@@ -2627,29 +2827,6 @@ body.site-page ::selection {
     0 32px 82px rgba(65, 45, 17, .15),
     inset 0 4px 0 rgba(var(--testimonial-rgb), .76),
     inset 0 1px 0 rgba(255, 255, 255, .94) !important;
-}
-
-.site-page-home .testimonial-person > .testimonial-avatar {
-  width: 52px;
-  height: 52px;
-  flex: 0 0 52px;
-  display: block;
-  overflow: hidden;
-  padding: 0;
-  border: 2px solid rgba(var(--testimonial-rgb), .54);
-  border-radius: 50%;
-  background: rgba(var(--testimonial-rgb), .18);
-  box-shadow:
-    0 8px 22px rgba(65, 45, 17, .16),
-    0 0 0 4px rgba(var(--testimonial-rgb), .1);
-}
-
-.site-page-home .testimonial-avatar img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center;
 }
 
 /* Page Therapiego — hero aligné sur la direction de « Ma méthode » */
