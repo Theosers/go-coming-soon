@@ -57,7 +57,7 @@
   padding: 4px;
   border: 1px solid rgba(201, 162, 98, .46);
   border-radius: 18px;
-  background: #fff;
+  background: transparent;
   object-fit: contain;
   box-shadow: 0 14px 34px rgba(0, 0, 0, .22);
 }

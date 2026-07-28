@@ -124,7 +124,7 @@
   padding: 4px;
   border: 1px solid rgba(201, 162, 98, .38);
   border-radius: 19px;
-  background: #fff;
+  background: transparent;
   object-fit: contain;
 }
 

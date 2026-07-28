@@ -137,7 +137,7 @@ body.site-page button:focus-visible {
   overflow: hidden;
   border: 1px solid rgba(201, 162, 98, .34) !important;
   border-radius: 16px !important;
-  background: #fff !important;
+  background: transparent !important;
   box-shadow: none !important;
   transform: none !important;
 }

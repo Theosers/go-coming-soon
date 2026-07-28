@@ -13,7 +13,15 @@
   <meta property="og:title" content="Camille Berthon — Therapiego" />
   <meta property="og:description" content="Découvrez le parcours et la vision du Go de Camille Berthon, professeur et coach de Go." />
   <meta property="og:url" content="https://www.therapiego.com/a-propos.html" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://www.therapiego.com/assets/therapiego-og.webp" />
+  <meta property="og:image:secure_url" content="https://www.therapiego.com/assets/therapiego-og.webp" />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Logo illustré de Therapiego autour du jeu de Go" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.therapiego.com/assets/therapiego-og.webp" />
+  <meta name="twitter:image:alt" content="Logo illustré de Therapiego autour du jeu de Go" />
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -92,7 +100,7 @@
     }
   </script>
   <link rel="icon" type="image/webp" sizes="64x64" href="assets/therapiego-favicon.webp" />
-  <link rel="preload" as="image" href="assets/therapiego-avatar-navbar.webp" type="image/webp" />
+  <link rel="preload" as="image" href="assets/therapiego-avatar-profile-480.webp" imagesrcset="assets/therapiego-avatar-profile-480.webp 480w, assets/therapiego-avatar-profile.webp 800w" imagesizes="(max-width: 760px) calc(100vw - 40px), 460px" type="image/webp" />
   <style>
     :root {
       --ink: #17150f;
@@ -217,7 +225,7 @@
       flex: 0 0 48px;
       border: 1px solid rgba(201, 162, 98, .35);
       border-radius: 50%;
-      background: #fff;
+      background: transparent;
       box-shadow: 0 10px 24px rgba(71, 55, 28, .14);
       object-fit: contain;
     }
@@ -425,7 +433,7 @@
       width: 100%;
       aspect-ratio: .92;
       border-radius: 46% 46% 24px 24px;
-      background: #fff;
+      background: transparent;
       object-fit: contain;
       object-position: center bottom;
     }
@@ -871,7 +879,7 @@
     .portrait-card img {
       aspect-ratio: 4 / 5;
       border-radius: 29px;
-      background: #e9d7bd;
+      background: transparent;
       object-fit: cover;
       object-position: 50% 44%;
       filter: saturate(.93) contrast(1.03);
@@ -1307,7 +1315,7 @@
   <header class="site-header">
     <nav class="navbar" aria-label="Navigation principale">
       <a class="brand" href="index.html#accueil" aria-label="Le site de Therapiego — Accueil">
-        <img class="brand-avatar" src="assets/therapiego-avatar-navbar-128.webp" srcset="assets/therapiego-avatar-navbar-64.webp 64w, assets/therapiego-avatar-navbar-128.webp 128w, assets/therapiego-avatar-navbar.webp 231w" sizes="52px" width="231" height="256" alt="" decoding="async">
+        <img class="brand-avatar" src="assets/therapiego-avatar-navbar-128.webp" srcset="assets/therapiego-avatar-navbar-64.webp 64w, assets/therapiego-avatar-navbar-128.webp 128w, assets/therapiego-avatar-navbar.webp 256w" sizes="52px" width="256" height="284" alt="" decoding="async">
         <span class="brand-copy">
           <span class="brand-name">Le site de</span>
           <span class="brand-sub">Therapiego</span>
@@ -1352,7 +1360,7 @@
 
       <figure class="portrait-card">
         <picture>
-          <img src="assets/therapiego-avatar-navbar.webp" width="231" height="256" alt="Logo illustré de Therapiego" fetchpriority="high" decoding="async">
+          <img src="assets/therapiego-avatar-profile-480.webp" srcset="assets/therapiego-avatar-profile-480.webp 480w, assets/therapiego-avatar-profile.webp 800w" sizes="(max-width: 760px) calc(100vw - 40px), 460px" width="480" height="532" alt="Logo illustré de Therapiego" fetchpriority="high" decoding="async">
         </picture>
         <figcaption class="portrait-caption">
           <span>
@@ -1537,7 +1545,7 @@
       <div class="site-footer-intro">
         <div class="site-footer-brand-block">
           <a class="site-footer-brand" href="index.html#accueil" aria-label="Le site de Therapiego — Accueil">
-            <img class="site-footer-brand-avatar" src="assets/therapiego-avatar-navbar-128.webp" srcset="assets/therapiego-avatar-navbar-64.webp 64w, assets/therapiego-avatar-navbar-128.webp 128w, assets/therapiego-avatar-navbar.webp 231w" sizes="58px" width="231" height="256" alt="" loading="lazy" decoding="async">
+            <img class="site-footer-brand-avatar" src="assets/therapiego-avatar-navbar-128.webp" srcset="assets/therapiego-avatar-navbar-64.webp 64w, assets/therapiego-avatar-navbar-128.webp 128w, assets/therapiego-avatar-navbar.webp 256w" sizes="58px" width="256" height="284" alt="" loading="lazy" decoding="async">
             <span class="site-footer-brand-copy"><span class="site-footer-brand-overline">Le site de</span><span class="site-footer-brand-name">Therapiego</span></span>
           </a>
           <p class="site-footer-tagline">Des cours de Go clairs et personnalisés pour comprendre votre jeu, progresser avec méthode et garder le plaisir de poser des pierres.</p>
